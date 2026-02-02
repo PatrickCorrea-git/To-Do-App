@@ -6,7 +6,9 @@ function App() {
 
   return (
     <div>
-      <h1>Lista de Tarefas</h1>
+      <h1>Lista de Tarefas: </h1>
+      <input type="text" />
+      <button>Adicionar: </button>
     </div>
   )
 }
