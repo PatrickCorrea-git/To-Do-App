@@ -1,8 +1,12 @@
+import { useState } from "react"
+
 function App() {
+
+  const [task, setTask ] = useState("");
 
   return (
     <div>
-      <h1>To-Do App</h1>
+      <h1>Lista de Tarefas</h1>
     </div>
   )
 }
