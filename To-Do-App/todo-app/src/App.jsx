@@ -11,24 +11,34 @@ function App() {
   const addTask = () => {
     if (text.trim() === "") {
       return;
+  }
+    const newTask = {
+      id: Date.now(), // id único para cada tarefa
+      texto: text, // texto da tarefa
+      concluida: false, // status da tarefa
+    };
 
-      const newTask = {
-        id: Date.now, // id único para cada tarefa
-        texto: text, // texto da tarefa
-        concluida: false, // status da tarefa
-      };
-
-      setTask((previousTask) => [...previousTask, newTask]);
-      setText("");
-    }
+    setTask((previousTask) => [...previousTask, newTask]);
+    setText("");
   }
 
-  return (
-    <div>
-      <h1>Lista de tarefas: </h1>
-      <input type="text" value={text} onChange={(e) => setTask(e.target.value)} />
-      <button>Adicionar</button>
-    </div>
-  );
+return (
+  <div>
+    <h1>Lista de tarefas: </h1>
+    <input type="text" value={text} onChange={(e) => setText(e.target.value)} />
+    <button onClick={addTask}>Adicionar</button>
+    <ul>
+      {task.map((taskItem) => (
+        <li key={taskItem.id}>{taskItem.texto}</li>
+      ))}
+    </ul>
+  </div>
+);
 }
 export default App
+
+
+
+
+
+
