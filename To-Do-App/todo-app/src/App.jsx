@@ -9,7 +9,9 @@ function App() {
 
   return (
     <div>
-      
+      <h1>Lista de tarefas: </h1>
+      <input type="text" value={text} onChange={(e) => setTask(e.target.value)}/>
+      <button>Adicionar</button>
     </div>
   );
 }
