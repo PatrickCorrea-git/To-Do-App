@@ -12,7 +12,7 @@ function App() {
   const addTask = () => {
     if (text.trim() === "") {
       return;
-  }
+    }
     const newTask = {
       id: Date.now(), // id único para cada tarefa
       texto: text, // texto da tarefa
@@ -26,8 +26,8 @@ function App() {
   // Função para alterar concluída 
   const toggleConcluida = (id) => {
     const novasTarefas = task.map((tarefa) => {
-      if(tarefa.id === id) {
-        return {...tarefa, concluida: !tarefa.concluida};
+      if (tarefa.id === id) {
+        return { ...tarefa, concluida: !tarefa.concluida };
       }
       return tarefa;
     });
@@ -41,23 +41,23 @@ function App() {
     setTask(novasTarefas);
   }
 
-return (
-  <div>
-    <h1>Lista de tarefas: </h1>
-    <input type="text" value={text} onChange={(e) => setText(e.target.value)} />
-    <button onClick={addTask}>Adicionar</button>
-    <ul>
-      {task.map((taskItem) => (
-        <taskItem
-        key={taskItem.id}
-        task={taskItem}   // envia os dados da tarefa
-        onToggle={toggleConcluida}  // envia a função de alternar concluída
-        onRemove={removerTarefa}  // envia a função de remover
-        />
-      ))}
-    </ul>
-  </div>
-);
+  return (
+    <div>
+      <h1>Lista de tarefas: </h1>
+      <input type="text" value={text} onChange={(e) => setText(e.target.value)} />
+      <button onClick={addTask}>Adicionar</button>
+      <ul>
+        {task.map((taskItem) => (
+          <TaskItem
+            key={taskItem.id}
+            task={taskItem}   // envia os dados da tarefa
+            onToggle={toggleConcluida}  // envia a função de alternar concluída
+            onRemove={removerTarefa}  // envia a função de remover
+          />
+        ))}
+      </ul>
+    </div>
+  );
 }
 export default App
 

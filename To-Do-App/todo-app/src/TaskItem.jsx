@@ -1,8 +1,12 @@
 import React from 'react'
 
-const TaskItem = ({task}) => {
+const TaskItem = ({task, onToggle, onRemove}) => {
+
   return (
-    <li>{task.texto}</li>
+    <li>
+        <span onClick={() => onToggle(task.id)}>{task.texto}</span>
+        <button onClick={() => onRemove(task.id)}>Remover</button>
+    </li>
   )
 }
 
