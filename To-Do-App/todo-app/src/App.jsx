@@ -22,6 +22,18 @@ function App() {
     setText("");
   }
 
+  // Função para alterar concluída 
+  const toggleConcluida = (id) => {
+    const novasTarefas = task.map((tarefa) => {
+      if(tarefa.id === id) {
+        return {...tarefa, concluida: !tarefa.concluida};
+      }
+      return tarefa;
+    });
+
+    setTask(novasTarefas);
+  }
+
 return (
   <div>
     <h1>Lista de tarefas: </h1>
