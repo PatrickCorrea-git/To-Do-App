@@ -1,4 +1,5 @@
 import { useState } from "react";
+import TaskItem from "./TaskItem";
 
 function App() {
   // Estado para lista de Tarefas
@@ -47,7 +48,12 @@ return (
     <button onClick={addTask}>Adicionar</button>
     <ul>
       {task.map((taskItem) => (
-        <li key={taskItem.id}>{taskItem.texto}</li>
+        <taskItem
+        key={taskItem.id}
+        task={taskItem}   // envia os dados da tarefa
+        onToggle={toggleConcluida}  // envia a função de alternar concluída
+        onRemove={removerTarefa}  // envia a função de remover
+        />
       ))}
     </ul>
   </div>
