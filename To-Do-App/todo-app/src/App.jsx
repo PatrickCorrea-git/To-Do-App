@@ -34,6 +34,12 @@ function App() {
     setTask(novasTarefas);
   }
 
+  // Função remover
+  const removerTarefa = (id) => {
+    const novasTarefas = task.filter((tarefa) => tarefa.id !== id)
+    setTask(novasTarefas);
+  }
+
 return (
   <div>
     <h1>Lista de tarefas: </h1>
