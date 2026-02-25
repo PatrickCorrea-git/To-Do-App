@@ -41,10 +41,17 @@ function App() {
     setTask(novasTarefas);
   }
 
+  // Adicionar tarefa com enter
+  const handleKeyPress = (e) => {
+    if(e.key === "Enter") {
+      addTask();
+    }
+  }
+
   return (
     <div>
       <h1>Lista de tarefas: </h1>
-      <input type="text" value={text} onChange={(e) => setText(e.target.value)} />
+      <input type="text" value={text} onChange={(e) => setText(e.target.value)} onKeyPress={handleKeyPress}/>
       <button onClick={addTask}>Adicionar</button>
       <ul>
         {task.map((taskItem) => (
