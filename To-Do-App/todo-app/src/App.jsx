@@ -1,5 +1,6 @@
 import { useState } from "react";
 import TaskItem from "./TaskItem";
+import "./App.css";
 
 function App() {
   // Estado para lista de Tarefas
