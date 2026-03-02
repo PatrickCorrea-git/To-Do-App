@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, use } from "react";
 import TaskItem from "./TaskItem";
 import "./App.css";
 
 function App() {
-  // Estado para lista de Tarefas
+  // Estado para lista de Tarefas e função para apenas a primeira render
   const [task, setTask] = useState(() => {
     const tarefasSalvas = localStorage.getItem("tarefa");
     return tarefasSalvas ? JSON.parse(tarefasSalvas) : [];
@@ -11,6 +11,16 @@ function App() {
 
   // Texto do input
   const [text, setText] = useState("");
+
+  // Estado do filtro
+  const [filter, setFilter] = useState("todas");
+
+  // Lista Filtrada
+  const taskFilter = task.filter((tarefa) => {
+    if (filter === "concluidas") return tarefa.concluida;
+    if (filter === "pendentes") return !tarefa.concluida;
+    return true; // todas
+  })
 
   // Salvar tarefas sempre que mudar
   useEffect(() => {
@@ -53,7 +63,7 @@ function App() {
 
   // Adicionar tarefa com enter
   const handleKeyPress = (e) => {
-    if(e.key === "Enter") {
+    if (e.key === "Enter") {
       addTask();
     }
   }
@@ -61,10 +71,16 @@ function App() {
   return (
     <div>
       <h1>Lista de tarefas: </h1>
-      <input type="text" value={text} onChange={(e) => setText(e.target.value)} onKeyPress={handleKeyPress}/>
+      <input type="text" value={text} onChange={(e) => setText(e.target.value)} onKeyPress={handleKeyPress} />
       <button onClick={addTask}>Adicionar</button>
+      <div style={{ marginTop: "10px" }}>
+        <button onClick={() => setFilter("todas")}>Todas</button>
+        <button onClick={() => setFilter("concluidas")}>Concluidas</button>
+        <button onClick={() => setFilter("pendentes")}>Pendentes</button>
+      </div>
+
       <ul>
-        {task.map((taskItem) => (
+        {taskFilter.map((taskItem) => (
           <TaskItem
             key={taskItem.id}
             task={taskItem}   // envia os dados da tarefa
