@@ -4,23 +4,17 @@ import "./App.css";
 
 function App() {
   // Estado para lista de Tarefas
-  const [task, setTask] = useState([]);
+  const [task, setTask] = useState(() => {
+    const tarefasSalvas = localStorage.getItem("tarefa");
+    return tarefasSalvas ? JSON.parse(tarefasSalvas) : [];
+  });
 
   // Texto do input
   const [text, setText] = useState("");
 
-  // Carregar tarefas  do LocalStorage ao iniciar
-  useEffect(() => {
-    const tarefasSalvas = localStorage.getItem("tarefas");
-
-    if(tarefasSalvas) {
-      setTask(JSON.parse(tarefasSalvas));
-    }
-  }, []);
-
   // Salvar tarefas sempre que mudar
   useEffect(() => {
-    localStorage.setItem("tarefas", JSON.stringify(task));
+    localStorage.setItem("tarefa", JSON.stringify(task));
   }, [task]);
 
 
