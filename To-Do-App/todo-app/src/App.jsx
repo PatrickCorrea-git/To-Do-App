@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import TaskItem from "./TaskItem";
 import "./App.css";
 
@@ -8,6 +8,15 @@ function App() {
 
   // Texto do input
   const [text, setText] = useState("");
+
+  // Carregar tarefas  do LocalStorage ao iniciar
+  useEffect(() => {
+    const tarefasSalvas = localStorage.getItem("tarefas");
+
+    if(tarefasSalvas) {
+      setTask(JSON.parse(tarefasSalvas));
+    }
+  }, []);
 
   // Função de adicionar
   const addTask = () => {
