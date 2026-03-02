@@ -18,6 +18,8 @@ function App() {
     }
   }, []);
 
+  //
+
   // Função de adicionar
   const addTask = () => {
     if (text.trim() === "") {
