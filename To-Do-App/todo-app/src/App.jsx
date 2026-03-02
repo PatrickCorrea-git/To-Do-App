@@ -18,7 +18,11 @@ function App() {
     }
   }, []);
 
-  //
+  // Salvar tarefas sempre que mudar
+  useEffect(() => {
+    localStorage.setItem("tarefas", JSON.stringify(task));
+  }, [task]);
+
 
   // Função de adicionar
   const addTask = () => {
