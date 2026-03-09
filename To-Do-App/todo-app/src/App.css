@@ -1,25 +1,139 @@
 * {
   padding: 0;
-  border: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: #f4f4f4;
+  background-color: #3f3d3d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* deixa crescer */
+  padding-top: 30px; /* da espaçamento no topo */
+  padding-bottom: 30px;
 }
 
-div {
-  max-width: 500px;
-  margin: 50px auto;
+/* Container principal */
+
+.container {
+  background: #FFF;
+  padding: 30px;
+  border-radius: 12px;
+  width: 420px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* Titulo */
+.container h1{
   text-align: center;
+  margin-bottom: 20px;
+  color: #333;
 }
 
-ul {
-  list-style: none;
+/* Input e botão */
+.input-group{
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
 }
 
-li {
+.input-group input{
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  font-size: 14px;
+}
+
+.input-group input:focus{
+  border-color: #4CAF50;
+}
+
+.input-group button{
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  background: #4CAF50;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.input-group button:hover{
+  background: #43a047;
+}
+
+/* Filtros */
+.filters{
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.filters button{
+  flex: 1;
+  padding: 8px;
+  border: none;
+  border-radius: 6px;
+  background: #1976D2;
+  color: #fff;
+  cursor: pointer;
+  font-size: 13px;
+}
+.filters button:hover{
+  background: #1565c0;
+}
+
+/* Contador */
+.task-count{
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+/* Lista */
+li{
   display: flex;
   justify-content: space-between;
-  margin: 10px 0;
+  align-items: center;
+  background: #f7f7f7;
+  padding: 10px 12px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  transition: 0.2s;
+}
+
+li:hover{
+  background: #efefef;
+}
+
+/* Texto tarefa */
+li span{
+  cursor: pointer;
+}
+
+/* Tarefa concluída */
+.completed{
+  text-decoration: line-through;
+  color: #000;
+}
+
+/* Botão remover */
+li button{
+  border: none;
+  background: #e53935;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+li button:hover{
+  background: #c62828;
 }

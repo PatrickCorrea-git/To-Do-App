@@ -68,16 +68,27 @@ function App() {
     }
   }
 
+  const pendentes = task.filter((t) => !t.concluida).length;
+  const concluidas = task.filter((t) => t.concluida).length;
+
   return (
-    <div>
+    <div className="container">
       <h1>Lista de tarefas: </h1>
-      <input type="text" value={text} onChange={(e) => setText(e.target.value)} onKeyPress={handleKeyPress} />
+
+      <div className="input-group">
+      <input type="text" value={text} onChange={(e) => setText(e.target.value)} onKeyDown={handleKeyPress} placeholder="Digite uma tarefa..."/>
       <button onClick={addTask}>Adicionar</button>
-      <div style={{ marginTop: "10px" }}>
+      </div>
+
+      <div className="filters">
         <button onClick={() => setFilter("todas")}>Todas</button>
         <button onClick={() => setFilter("concluidas")}>Concluidas</button>
         <button onClick={() => setFilter("pendentes")}>Pendentes</button>
       </div>
+
+      <p className="task-count">
+        {pendentes} pendente(s) | {concluidas} concluída(s)
+      </p>
 
       <ul>
         {taskFilter.map((taskItem) => (
